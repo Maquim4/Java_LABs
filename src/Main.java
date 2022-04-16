@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 import java.util.Collections;
 import java.util.Comparator;
@@ -14,10 +13,16 @@ public class Main {
         System.out.print("Choose your option : ");
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ScannerException {
+        Scanner scanner = new Scanner(System.in);// класс Scanner для ввода данных из консоли
 
-        Aircompany = new AirCompany();
+        System.out.println("Please enter company name: ");
 
+        String nick = scanner.nextLine();
+        if (nick.equals("")) throw new ScannerException("String can not be empty!");
+
+
+        Aircompany = new AirCompany(nick);
 
         String[] options = {"1- Add plane ",
                 "2- Print all planes ",
@@ -27,12 +32,12 @@ public class Main {
                 "6- Exit",
 
         };
-        Scanner scanner = new Scanner(System.in);// класс Scanner для ввода данных из консоли
+
         int option = 1;
 
         while (option != 6) {
             printMenu(options);
-            try {
+
                 option = scanner.nextInt();
                 scanner.nextLine();
                 switch (option) {
@@ -58,32 +63,34 @@ public class Main {
                         exit(0);
 
                 }
-            } catch (Exception ex) {
-                System.out.println("Please enter an integer value between 1 and " + options.length);
-                scanner.nextInt();
-            }
+
         }
         scanner.close();// закрытие потока
 
 
     }
     // options
-    private static void addPlane (Scanner scanner) {
+    private static void addPlane (Scanner scanner) throws ScannerException {
 
         System.out.println(" Enter plane name: ");
         String name = scanner.nextLine();
+        if (name.equals("")) throw new ScannerException("String can not be empty!");
 
         System.out.println(" Enter capacity:  ");
         int capacity = scanner.nextInt();
+        if (capacity<0) throw new ScannerException("Value cannot be less than zero");
 
         System.out.println(" Enter carrying:  ");
         double carrying = scanner.nextDouble();
+        if (carrying<0) throw new ScannerException("Value cannot be less than zero");
 
         System.out.println(" Enter distance:  ");
         double distance = scanner.nextDouble();
+        if (distance<0) throw new ScannerException("Value cannot be less than zero");
 
         System.out.println(" Enter fuelInput: ");
         double fuelInput = scanner.nextDouble();
+        if (fuelInput<0) throw new ScannerException("Value cannot be less than zero");
 
         Plane plane = new Plane(name,capacity,carrying,distance,fuelInput);
 
@@ -122,12 +129,14 @@ public class Main {
         double x=scanner.nextDouble();
         double y=scanner.nextDouble();
         for(Plane plane : Aircompany.getPlanesList()) {
-          if (plane.getFuelInput()>=x && plane.getFuelInput()<=y)
-              System.out.println(plane.toString());
+            if (plane.getFuelInput()>=x && plane.getFuelInput()<=y)
+                System.out.println(plane.toString());
 
 
         }
 
-  }
+    }
+
+
 
 }

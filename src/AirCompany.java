@@ -3,17 +3,21 @@ import java.util.List;
 
 public class AirCompany {
 
+    private String nick;
     private List<Plane> planesList;
 
-    public AirCompany() {
+    public AirCompany(String nick) {
         planesList = new ArrayList<>();
+        this.nick=nick;
 
     }
 
-    public AirCompany (List<Plane> planesList) {
-        this.planesList = planesList;
 
+
+    public String getNick() {
+        return nick;
     }
+
 
     public List<Plane> getPlanesList() {
         return planesList;
