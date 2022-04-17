@@ -1,4 +1,5 @@
 public class Plane {
+
     private String name;// название
     private int capacity;// вместимость
     private double carrying;// грузоподъемность
