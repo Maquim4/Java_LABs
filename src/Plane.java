@@ -1,4 +1,6 @@
-public class Plane {
+import java.io.Serializable;
+
+public class Plane implements Serializable {
 
     private String name;// название
     private int capacity;// вместимость

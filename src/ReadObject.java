@@ -5,10 +5,9 @@ import java.io.ObjectInputStream;
 public class ReadObject {
 
 
-    public static AirCompany deserialze(String filename) {
+    public static AirCompany deserialize(String filename) {
 
         AirCompany Aircompany = null;
-
         FileInputStream fin = null;
         ObjectInputStream ois = null;
 
@@ -26,6 +25,7 @@ public class ReadObject {
                 try {
                     fin.close();
                 } catch (IOException e) {
+                    System.out.println("file null");
                     e.printStackTrace();
                 }
             }
@@ -34,6 +34,7 @@ public class ReadObject {
                 try {
                     ois.close();
                 } catch (IOException e) {
+                    System.out.println("obj null");
                     e.printStackTrace();
                 }
             }
@@ -44,20 +45,5 @@ public class ReadObject {
 
     }
 
-    public AirCompany deserialzeJDK7(String filename) {
-
-        AirCompany Aircompany = null;
-
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-
-            Aircompany = (AirCompany) ois.readObject();
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        return Aircompany;
-
-    }
 
 }

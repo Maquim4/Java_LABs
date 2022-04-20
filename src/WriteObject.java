@@ -17,7 +17,7 @@ public class WriteObject {
             oos = new ObjectOutputStream(fout);
             oos.writeObject(Aircompany);
 
-            System.out.println("Done");
+            System.out.println("Оbject added to file");
 
         } catch (Exception ex) {
 
@@ -44,17 +44,6 @@ public class WriteObject {
         }
     }
 
-    public void serializeJDK7(AirCompany Aircompany) {
 
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("test"))) {
-
-            oos.writeObject(Aircompany);
-            System.out.println("Done");
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-    }
 
 }

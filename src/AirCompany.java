@@ -73,6 +73,14 @@ public class AirCompany implements Serializable {
 
 
 
+    @Override
+    public String toString() {
+        return "Aircompany " + nick + ':';
+    }
+
+
+
+
 
 
 
